@@ -67,9 +67,9 @@ find . -print | cpio -o --quiet -H newc | xz --format=lzma > /opt/xs-install/ins
 
 apt-get -qy update
 apt-get -qy install kexec-tools
-#gunzip /opt/xs-install/boot/xen.gz
+gunzip /opt/xs-install/boot/xen.gz
 
-kexec -l /opt/xs-install/boot/xen.gz -t multiboot-x86 --append="no-real-mode dom0_max_vcpus=1-2 dom0_mem=max:752M com1=115200,8n1 console=com1,vga" \
+kexec -l /opt/xs-install/boot/xen -t multiboot-x86 --append="no-real-mode dom0_max_vcpus=1-2 dom0_mem=max:752M com1=115200,8n1 console=com1,vga" \
     --module="/opt/xs-install/boot/vmlinuz xencons=hvc console=tty0 console=hvc0 make-ramdisk=/dev/sda1 answerfile=file:///answerfile.xml install" \
     --module="/opt/xs-install/install_modded.img"
 

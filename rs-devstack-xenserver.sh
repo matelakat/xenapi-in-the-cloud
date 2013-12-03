@@ -109,7 +109,7 @@ Finished!
 
 To access your machine, type:
 
-ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i "$ACCESS_PRIVKEY" root@$VM_IP
+ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i "$TEMPORARY_PRIVKEY" root@$VM_IP
 EOF
 exit 0 #TODO - remove this
 sleep 30

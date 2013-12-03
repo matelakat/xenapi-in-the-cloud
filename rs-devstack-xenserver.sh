@@ -104,6 +104,7 @@ cat start-xenserver-installer.sh
     -o UserKnownHostsFile=/dev/null -i "$TEMPORARY_PRIVKEY" root@$VM_IP \
     bash -s -- "$XENSERVER_PASSWORD" "$AUTHORIZED_KEYS"
 
+exit 0 #TODO - remove this
 sleep 30
 
 wait_for_ssh "$VM_IP"

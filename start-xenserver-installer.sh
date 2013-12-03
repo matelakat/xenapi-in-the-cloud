@@ -64,7 +64,7 @@ EOF
 
 find . -print | cpio -o --quiet -H newc | xz --format=lzma > /opt/xs-install/install_modded.img
 )
-
+exit 0 #TODO - remove this
 cat > /etc/grub.d/45_xs-install << EOF
 cat << XS_INSTALL
 menuentry 'XenServer installer' {

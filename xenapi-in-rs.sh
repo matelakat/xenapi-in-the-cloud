@@ -544,6 +544,11 @@ function configure_appliance_to_cloud() {
         VMNET=$(xe network-create name-label=vmnet)
     fi
 
+    PUBNET=$(xe network-list name-label=pubnet --minimal)
+    if [ -z "$PUBNET" ]; then
+        PUBNET=$(xe network-create name-label=pubnet)
+    fi
+
     xe pif-reconfigure-ip \
         uuid=$PIF \
         mode=static \
@@ -572,6 +577,7 @@ function configure_appliance_to_cloud() {
     xe vif-create vm-uuid=$VM network-uuid=$ORIGINAL_MGT_NET mac=$MACADDRESS device=1
     xe vif-create vm-uuid=$VM network-uuid=$NEW_MGT_NET device=2
     xe vif-create vm-uuid=$VM network-uuid=$VMNET device=3
+    xe vif-create vm-uuid=$VM network-uuid=$PUBNET device=4
 
     xe vm-start uuid=$VM
 
